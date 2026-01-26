@@ -1,0 +1,102 @@
+/* UNIVERSAL UPDATES */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+
+}
+
+/* UPDATES AROUND BODY */
+body{
+    height: 100vh;
+    background:linear-gradient(-45deg,#035830,#e560dc,#ffb374,#ef5f5f,#d840b6);
+    background-size: 400%,400%;
+    animation: bg 12s ease infinite;
+}
+@keyframes bg {
+    0%{
+        background-position: 0%,50%;
+    }
+    50%{
+        background-position: 100%,100%;
+    }
+    100%{
+        background-position: 0%,50%;
+    }
+    
+}
+
+/*  TAG UPDATES  */
+h1{
+    font-size: 70px;
+    
+}
+.c1{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.hrline{
+    height:3px;
+    width: 300px;
+    background-color:rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+.c2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    flex-wrap: wrap;
+    font-weight: 900;
+
+}
+.quiz1{
+    /* width: 150px;
+    height: 200px; */
+    padding:130px 70px;
+    color:hsl(6, 95%, 57%);
+    background-color: rgb(255, 255, 255);
+    margin: 20px ;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    border-radius: 15px;
+}
+
+.quiz1:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: rgb(201, 205, 205);
+    box-shadow: 0px 0px 10px 2px azure;
+}
+
+.quiz2{
+    /* width: 150px;
+    height: 200px; */
+    color:hsl(6, 95%, 57%);
+    padding: 130px 70px;
+    background-color: rgb(255, 255, 255);
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    border-radius: 15px;
+}
+
+.quiz2:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: rgb(201, 205, 205);
+    box-shadow: 0px 0px 10px azure;
+}

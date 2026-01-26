@@ -1,0 +1,232 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background:linear-gradient(-60deg,#ffb374,#ef5f5f,#d840b6,rgb(118, 9, 186));
+    background-size: 400%,400%;
+    animation: bg 12s ease infinite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+@keyframes bg {
+    0%{
+        background-position: 0%,50%;
+    }
+    50%{
+        background-position: 100%,100%;
+    }
+    100%{
+        background-position: 0%,50%;
+    }
+    
+}
+
+
+#quizname{
+    display: flex;
+    margin: 50px 100px;
+    align-items: center;
+    font-size: 30px;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 900;
+
+
+}
+
+.cquesans{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 50px;
+    padding:20px;
+    align-items: baseline;
+    justify-content: space-between;
+    /* background-color: bisque; */
+    border-radius: 30px;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+#queno{
+    display: flex;
+    padding: 5px 10px;
+    margin-right:20px;
+    background-color: azure;
+    border-radius: 50%;
+    color: black;
+    font-size: 20px;
+
+}
+
+.question{
+    display: flex;
+    margin-bottom: 50px;
+    width: 100%;
+    padding: 15px;
+    background-color: black;
+    color: azure;
+    border-radius: 30px;
+
+}
+
+.option{
+    display: flex;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: snow;
+    width: 100%;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.option:hover{
+    background-color: rgb(239, 239, 37);
+    color: black;
+    transition: 0.5s;
+}
+
+.optionIn{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.circle{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid black;
+    margin-right: 15px;
+}
+
+.rightanswer{
+    background-color: #99b83c;
+    display: flex;
+}
+
+.rightanswer:hover{
+    background-color: #99b83c;
+}
+
+.rightanswer .circle{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background-image:url('./utils/icons8-checkmark-50.png') ;
+    background-size: cover;
+}
+
+.wronganswer{
+    background-color: #ef2929;
+    display: flex;
+}
+
+.wronganswer:hover{
+    background-color: #ef2929;
+}
+.wronganswer .circle{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background-image:url('./utils/icons8-wrong-50.png') ;
+    background-size: cover;
+}
+
+.cbuttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+button{
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+button:hover{
+   border: none;
+   transform: scale(1.02);
+   border: 3px solid white;
+   cursor: pointer; 
+}
+
+.scoreboard{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    margin: 10px;
+    padding:5px 10px;
+    background-color: aliceblue;
+    font-size: 20px;
+    border-radius: 30px;
+    border: 2px solid black;
+
+}
+
+.scoretxt{
+    font-size: 20px;
+    padding: 5px 10px;
+    font-weight: 600;
+    border-radius: 16px;
+}
+
+#score{
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    padding:5px 10px;
+    font-weight: 600;
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+/* STYLING FOR ADD QUESTIONS PAGE */
+
+.hrline{
+    display: flex;
+    border-top: 5px solid white;
+    margin-bottom: 10px;
+}
+
+.newques{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 50px 50px;
+    padding:30px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 25px;
+    font-weight: 900;
+    gap: 30px;
+}
+
+input{
+    width: 100%;
+    border: none;
+    font-size: 22px;
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 15px;
+
+}
+
+#addquesno{
+    width: 25%;
+}
+

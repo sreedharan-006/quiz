@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizz - Home</title>
+    <link rel="stylesheet" href="appquizz.css">
+</head>
+<body>
+    <div class="c1"> 
+        <h1>The Quizz App</h1>
+        <div class="hrline"></div>
+        <h3>Choose yours..</h3>
+        <!-- <a href="quesset.html" class="quesset">Click here to Create Quizz</a> -->
+    </div>
+
+    <div class="c2">
+        <div class="quiz1"  onclick="openq('java')">
+            <!-- <img src="utils\java.png" alt="JAVA" width="70px"> -->
+             <h4>MATHEMATICS</h4>
+        </div>
+        <div class="quiz2" onclick="openq('python')">
+            <!-- <img src="utils\python.png" alt="PYTHON" width="70px"> -->
+             <h4>GRAMMAR</h4>
+        </div>
+    </div>
+    
+</body>
+<script>
+    function openq(quizname){
+        localStorage.clear();
+
+        localStorage.setItem('quizType',quizname);
+        localStorage.setItem('quesno',1);
+        localStorage.setItem('score',0);
+        localStorage.setItem('totalques',1);
+        window.location.href="quizzpage.html";
+        
+        
+    }
+</script>
+</html>

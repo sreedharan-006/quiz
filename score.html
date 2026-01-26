@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Board</title>
+    <link rel="stylesheet" href="scorestyle.css">
+</head>
+<body>
+    <div class="scorecard">
+        <p>YOUR SCORE</p>
+        <p id="scot">0/0</p>
+        <div class="homebtn">
+            <button id="home" onclick="gohome()">back to home</button>
+            <!-- <button id="retest" onclick=""></button> -->
+        </div>
+    </div>
+</body>
+<script>
+    let quizType=localStorage.getItem('quizname')
+    let score=localStorage.getItem('score');
+    let totque=localStorage.getItem('totalques');
+    let scot=document.getElementById('scot');
+    scot.innerHTML=localStorage.getItem('finalscore');
+    
+    function gohome(){
+        window.location.href="indexquizz.html";
+    }
+</script>
+</html>

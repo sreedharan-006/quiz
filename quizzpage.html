@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz page</title>
+    <link rel="stylesheet" href="quizzstyle.css">
+</head>
+<body>
+    <div id="quizname">
+        <h1>JAVA QUIZZ</h1>
+    </div>
+    <div class="cquesans">
+        <div class="question">
+            <p id="queno">1</p>
+            <p id="question">Q1. Does the range() function exists? </p>
+        </div>
+        
+        
+
+        <div class="option" id="option1out" onclick="clickoption('1')">
+            <div class="circle"></div>
+            <div class="optionIn" id="option1">This is 1st option</div>
+        </div>
+
+        <div class="option" id="option2out" onclick="clickoption('2')">
+            <div class="circle"></div>
+            <div class="optionIn" id="option2">This is 2nd option</div>
+        </div>
+
+        <div class="option" id="option3out" onclick="clickoption('3')">
+            <div class="circle"></div>
+            <div class="optionIn" id="option3">This is 3rd option</div>
+        </div>
+
+        <div class="option" id="option4out" onclick="clickoption('4')">
+            <div class="circle"></div>
+            <div class="optionIn" id="option4">This is 4th option</div>
+        </div>
+    </div>
+
+    <div class="cbuttons">
+        <button class="btn" onclick="prevques()">PREV</button>
+        <button class="btn" onclick="quit()">QUIT</button>
+        <button class="btn" onclick="nextques()">NEXT</button>
+    </div>
+
+    <div class="scoreboard">
+        <p class="scoretxt">Score:</p>
+        <p id="score">0/0</p>
+    </div>
+</body>
+<script>
+    // ------------------ Math Questions ------------------
+    const javaques=[
+        {question:'What is 2 + 5?', options:["6","7","8","9"], answer:1},
+        {question:'What is 10 – 4?', options:["5","6","7","8"], answer:1},
+        {question:'Which number comes after 99?', options:["98","99","100","101"], answer:2},
+        {question:'What is 3 × 3?', options:["6","7","8","9"], answer:3},
+        {question:'Half of 20 is:', options:["5","8","10","15"], answer:2},
+        {question:'15 ÷ 3 = ?', options:["3","4","5","6"], answer:2},
+        {question:'How many sides does a square have?', options:["2","3","4","5"], answer:2},
+        {question:'Which is the biggest number?', options:["12","21","15","19"], answer:1},
+        {question:'What is the place value of 5 in 53?', options:["5","50","500","5000"], answer:1},
+        {question:'Which shape has 3 sides?', options:["Square","Triangle","Circle","Rectangle"], answer:1},
+        {question:'7 + 8 = ?', options:["13","14","15","16"], answer:2},
+        {question:'Which is an even number?', options:["7","8","9","11"], answer:1},
+        {question:'1 hour = ? minutes', options:["30","40","50","60"], answer:3},
+        {question:'Which is the smallest number?', options:["2","5","9","11"], answer:0},
+        {question:'9 – 6 = ?', options:["2","3","4","5"], answer:1},
+    ];
+
+    // ------------------ Grammar Questions ------------------
+    const pyques=[
+        {question:'Which one is a noun?', options:["Run","Table","Quickly","Happy"], answer:1},
+        {question:'Pick the verb:', options:["Dog","Play","Green","Chair"], answer:1},
+        {question:'Opposite of "hot" is:', options:["Cold","Warm","Cool","Boil"], answer:0},
+        {question:'Plural of "Child" is:', options:["Childs","Children","Childes","Childrens"], answer:1},
+        {question:'Which is an adjective?', options:["Blue","Run","Slowly","Sing"], answer:0},
+        {question:'Which sentence is correct?', options:["She are happy","She is happy","She am happy","She be happy"], answer:1},
+        {question:'Which one is a pronoun?', options:["He","Tree","Fast","Sing"], answer:0},
+        {question:'Past tense of "go" is:', options:["Gone","Goes","Went","Going"], answer:2},
+        {question:'Which is a question word?', options:["Why","Book","Fast","Happy"], answer:0},
+        {question:'"I ___ a book yesterday."', options:["read","reads","reading","readed"], answer:0},
+        {question:'Which one is a conjunction?', options:["And","Blue","Run","Quick"], answer:0},
+        {question:'Opposite of "big" is:', options:["Large","Tall","Small","Huge"], answer:2},
+        {question:'Which sentence is in future tense?', options:["I eat rice","I will eat rice","I ate rice","I am eating rice"], answer:1},
+        {question:'Which word is an adverb?', options:["Quickly","Chair","Dog","Green"], answer:0},
+        {question:'Correct article for "apple" is:', options:["a","an","the","no article"], answer:1},
+    ];
+
+    const quizName=document.getElementById("quizname");
+    const quizType=localStorage.getItem('quizType');
+    const questionnumber=localStorage.getItem('quesno');
+    let score=localStorage.getItem('score');
+    let queno=document.getElementById("queno");
+
+
+    const quesElement=document.getElementById("question");
+    const option1Element=document.getElementById("option1");
+    const option2Element=document.getElementById("option2");
+    const option3Element=document.getElementById("option3");
+    const option4Element=document.getElementById("option4");
+
+    const quit=()=>{
+        localStorage.clear();
+        window.location.href="indexquizz.html"
+    }
+    const prevques=()=>{
+        if(quizType=="java"){
+            if(questionnumber>1){
+                localStorage.setItem("quesno",parseInt(questionnumber)-1);
+                window.location.href="quizzpage.html";
+                setquestion();
+            
+            }
+            else{
+                window.alert("No previous questions!");
+            }
+        }
+        else if(quizType=="python"){
+            if(questionnumber>1){
+                localStorage.setItem("quesno",parseInt(questionnumber)-1);
+                window.location.href="quizzpage.html";
+                setquestion();
+            
+            }
+            else{
+                window.alert("No previous questions!");
+            }
+        }
+    }
+    const nextques=()=>{
+        if(quizType=="java"){
+            if(questionnumber<javaques.length){
+                localStorage.setItem("quesno",parseInt(questionnumber)+1);
+                window.location.href="quizzpage.html";
+            
+            }
+            else{
+                setscore();
+                localStorage.setItem('finalscore',`${score}/${javaques.length}`)
+                window.location.href="score.html";
+            }
+        }
+        else if(quizType=="python"){
+            if(questionnumber<pyques.length){
+                localStorage.setItem("quesno",parseInt(questionnumber)+1);
+                window.location.href="quizzpage.html";
+            
+            }
+            else{
+                setscore();
+                localStorage.setItem('finalscore',`${score}/${javaques.length}`)
+                window.location.href="score.html";
+            }
+        }
+    }
+
+const status=()=>{
+    console.log('Quiz Type is ',quizType);
+    console.log('Question Number is ',questionnumber);
+    console.log('Score is ',score);
+    if(quizType=="java"){
+        console.log("answer is ",javaques[questionnumber-1].answer);    
+    }
+    else{
+        console.log("answer is ",pyques[questionnumber-1].answer);
+    }
+    
+}
+
+const selectedoption=(optionnumber)=>{
+    const optionvalue= document.getElementById("option"+optionnumber).innerHTML;
+    if(quizType=="java"){
+        if(optionvalue==javaques[questionnumber-1].options[javaques[questionnumber-1].answer]){
+            document.getElementById("option"+optionnumber+"out").classList.add("rightanswer");   
+        }
+        else{
+            document.getElementById("option"+optionnumber+"out").classList.add("wronganswer");      
+        }
+    }
+
+    if(quizType=="python"){
+        if(optionvalue==pyques[questionnumber-1].options[pyques[questionnumber-1].answer]){
+            document.getElementById("option"+optionnumber+"out").classList.add("rightanswer");   
+        }
+        else{
+            document.getElementById("option"+optionnumber+"out").classList.add("wronganswer");     
+        }
+    }
+}
+
+const setquestion=()=>{
+    if(quizType=="java"){
+        quizName.innerHTML="MATH QUIZ";
+        status();
+
+        document.title='MATH QUIZ';
+        localStorage.setItem('totalques',setscore());
+        queno.innerHTML=`${questionnumber}`;
+        quesElement.innerHTML=javaques[questionnumber-1].question;
+        option1Element.innerHTML=javaques[questionnumber-1].options[0];
+        option2Element.innerHTML=javaques[questionnumber-1].options[1];
+        option3Element.innerHTML=javaques[questionnumber-1].options[2];
+        option4Element.innerHTML=javaques[questionnumber-1].options[3];
+
+        if(localStorage.getItem(`answer${questionnumber}`)!=null){
+            selectedoption(localStorage.getItem(`answer${questionnumber}`));
+        }
+    }
+    else if(quizType=="python"){
+        status();
+        quizName.innerHTML="GRAMMAR QUIZ";
+        document.title="GRAMMAR QUIZ";
+        localStorage.setItem('totalques',setscore());
+        queno.innerHTML=`${questionnumber}`;
+        quesElement.innerHTML=pyques[questionnumber-1].question;
+        option1Element.innerHTML=pyques[questionnumber-1].options[0];
+        option2Element.innerHTML=pyques[questionnumber-1].options[1];
+        option3Element.innerHTML=pyques[questionnumber-1].options[2];
+        option4Element.innerHTML=pyques[questionnumber-1].options[3];
+
+        if(localStorage.getItem(`answer${questionnumber}`)!=null){
+            selectedoption(localStorage.getItem(`answer${questionnumber}`));
+        }
+    }
+    else{
+        console.log("No quiz selected");
+        quit();
+    }
+}
+
+
+
+const clickoption=(optionnumber)=>{
+    const optionvalue= document.getElementById("option"+optionnumber).innerHTML;
+
+    if(localStorage.getItem(`answer${questionnumber}`)==null){
+        if(quizType=="java"){
+            if(optionvalue==javaques[questionnumber-1].options[javaques[questionnumber-1].answer]){
+                document.getElementById("option"+optionnumber+"out").classList.add("rightanswer");   
+                score++;
+                localStorage.setItem(`score`,score);
+                setscore();
+                // setTimeout(1500);
+                if(questionnumber<javaques.length){
+                localStorage.setItem("quesno",parseInt(questionnumber)+1);
+                window.location.href="quizzpage.html";}
+
+                }
+        else{
+            document.getElementById("option"+optionnumber+"out").classList.add("wronganswer"); 
+            let javaans=javaques[questionnumber-1].answer;
+                document.getElementById("option"+(javaans+1)+"out").classList.add("rightanswer");
+   
+        }
+        }
+
+        else if(quizType=="python"){
+            if(optionvalue==pyques[questionnumber-1].options[pyques[questionnumber-1].answer]){
+                document.getElementById("option"+optionnumber+"out").classList.add("rightanswer"); 
+                score++;
+                localStorage.setItem(`score`,score);
+                setscore();  
+            }
+            else{
+                document.getElementById("option"+optionnumber+"out").classList.add("wronganswer");
+                let pyans=pyques[questionnumber-1].answer;
+                document.getElementById("option"+(pyans+1)+"out").classList.add("rightanswer");
+
+
+            }
+        } 
+
+        localStorage.setItem(`answer${questionnumber}`,optionnumber);
+    }
+    else{
+        window.alert(`you have already selected an option!`);
+    }
+}
+
+const setscore=()=>{
+    let length=0;
+    if(quizType=="java"){
+        length=javaques.length;
+    }
+    else if(quizType=="python"){
+        length=pyques.length;
+    }
+
+    document.getElementById('score').innerHTML=`${score}/${length}`                                
+}
+
+setquestion();
+setscore();
+</script>
+</html>
